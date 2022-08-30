@@ -22,9 +22,9 @@ import datetime
 from xml.dom import minidom
 
 try:
-    from ConfigParser import SafeConfigParser
+    from ConfigParser import ConfigParser
 except ImportError:
-    from configparser import SafeConfigParser
+    from configparser import ConfigParser
 
 __version__ = '1.2.1'
 
@@ -40,6 +40,7 @@ author = config.get('addon', 'author')
 summary = config.get('addon', 'summary')
 description = config.get('addon', 'description')
 url = config.get('locations', 'url')
+branch = config.get('locations', 'branch')
 
 # Script settings:
 ask_for_exit_input = True  # asks user to press enter to exit the information window (stdout)
@@ -109,7 +110,9 @@ class Generator:
             summary=summary,
             description=description,
             url=url,
-            output_path=output_path
+            output_path=output_path,
+            branch=branch
+            
         )
 
         # save file
